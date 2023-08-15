@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --saffron: rgb(255, 103, 31);
+    --white: rgb(255, 255, 255);
+    --green: rgb(4, 106, 56);
+    --blue: rgb(6, 3, 141);
+    --btn-blue: rgb(66 133 244);
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    width: 100%;
+    height: 90%;
+}
+
+
+.main {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 15px;
+}
+
+.show {
+    display: none;
+}
+
+.head {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.main .btn {
+    border: 2px solid black;
+    outline: none;
+    background: none;
+    font-size: 16px;
+    width: 90px;
+    height: 40px;
+}
+
+.main .btn:hover {
+    cursor: pointer;
+}
+
+.inputBox {
+    width: calc(50% - 2px);
+    height: 50px;
+    outline: none;
+    border: transparent;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.259);
+    font-size: 16px;
+    padding: 0px 5px;
+}
+
+.wrap2 {
+    width: 100%;
+    height: 90%;
+    background: linear-gradient(160deg, var(--saffron) 0%, var(--white) 30%, var(--white) 60%, var(--green) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+.visible {
+    display: none;
+}
+
+.main2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5%;
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main2 .namE {
+    font-family: 'Maven Pro', sans-serif;
+}
+
+.circle {
+    position: relative;
+    width: 225px;
+    height: 225px;
+    color: var(--blue);
+    border: 8px solid currentColor;
+    border-radius: 50%;
+    transform: rotateY(180deg);
+    box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.388);
+    animation: outerCircle 2s cubic-bezier(0.25, 1, 0.7, 1.35),
+        rotate 40s linear infinite 3s;
+}
+
+.circle::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: currentColor;
+    border-radius: 50%;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    animation: innerCircle 3s cubic-bezier(0.25, 1, 0.7, 1.35);
+}
+
+.circle .spikes,
+.circle .spikes .spike {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.circle .spikes .spike {
+    transform: rotate(calc(15deg * var(--i)));
+}
+
+.circle .spikes .spike::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 12px;
+    background: currentColor;
+    border-radius: 50%;
+    top: -6px;
+    left: calc(50% - 6px);
+    animation: sideDots 2s linear calc(-0.05s * var(--i));
+}
+
+.circle .spikes .spike::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 50%;
+    background: currentColor;
+    top: -6px;
+    left: calc(50% - 3px);
+    transform-origin: bottom;
+    transform: rotate(7.5deg);
+    clip-path: polygon(50% 5%, 100% 50%, 50% 95%, 0% 50%);
+    animation: spike 3s linear calc(-0.05s * var(--i));
+}
+
+.text {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+.footer {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.881);
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ALL ANIMATION KEYFRAMES */
+@keyframes outerCircle {
+    0% {
+        transform: rotateY(180deg) scale(0);
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotateY(180deg) rotate(360deg);
+    }
+}
+
+@keyframes innerCircle {
+
+    0%,
+    75% {
+        transform: scale(0);
+    }
+}
+
+@keyframes sideDots {
+
+    0%,
+    90% {
+        opacity: 0;
+    }
+}
+
+@keyframes spike {
+
+    0%,
+    90% {
+        opacity: 0;
+        clip-path: polygon(50% 90%, 100% 90%, 90% 95%, 0% 50%);
+    }
+}
+
+@keyframes textAni {
+
+    0%,
+    80% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
